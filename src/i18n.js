@@ -4,10 +4,24 @@ export const dict = {
   en: {
     'menu.heading': 'Menu',
     'lang.switch': 'العربية',
+    'nav.menu': 'Menu',
+    'nav.about': 'About',
+    'nav.contacts': 'Contacts',
+    'nav.whatsapp': 'Order',
+    'nav.whatsapp.aria': 'Order via WhatsApp',
+    'hero.tagline': 'Specialty coffee in the heart of Madinah',
+    'hero.cta': 'View Menu',
   },
   ar: {
     'menu.heading': 'المنيو',
     'lang.switch': 'English',
+    'nav.menu': 'المنيو',
+    'nav.about': 'من نحن',
+    'nav.contacts': 'تواصل معنا',
+    'nav.whatsapp': 'اطلب',
+    'nav.whatsapp.aria': 'اطلب عبر واتساب',
+    'hero.tagline': 'قهوة مختصة في قلب المدينة المنورة',
+    'hero.cta': 'شاهد المنيو',
   },
 };
 

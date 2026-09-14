@@ -1,22 +1,15 @@
 import './styles/main.css';
+import './styles/header.css';
+import './styles/hero.css';
 import './styles/menu.css';
+import { renderHeader } from './render-header.js';
+import { renderHero } from './render-hero.js';
 import { renderMenuSection } from './render-menu.js';
-import { getInitialLang, persistLang, applyLangToDocument, t } from './i18n.js';
+import { getInitialLang, persistLang, applyLangToDocument } from './i18n.js';
 
 const app = document.querySelector('#app');
 
 let lang = getInitialLang();
-
-function renderLangToggle() {
-  const btn = document.createElement('button');
-  btn.className = 'lang-toggle';
-  btn.type = 'button';
-  btn.setAttribute('aria-pressed', 'false');
-  btn.lang = lang === 'ar' ? 'en' : 'ar';
-  btn.dataset.i18n = 'lang.switch';
-  btn.addEventListener('click', () => setLang(lang === 'ar' ? 'en' : 'ar'));
-  return btn;
-}
 
 function wireTabs(section) {
   const tabs = section.querySelectorAll('.menu-tabs__tab');
@@ -59,11 +52,11 @@ function restoreScrollAnchor(anchor) {
 function render() {
   app.innerHTML = '';
 
-  const toggle = renderLangToggle();
-  app.append(toggle);
-
+  const header = renderHeader(lang, () => setLang(lang === 'ar' ? 'en' : 'ar'));
+  const hero = renderHero();
   const menuSection = renderMenuSection(lang);
-  app.append(menuSection);
+
+  app.append(header, hero, menuSection);
   wireTabs(menuSection);
 
   applyLangToDocument(lang);
