@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Полировка: scroll-spy, доступность, локализованные title/description *)",
+      "Read(//Users/muslimmm/.config/**)",
+      "Read(//Users/muslimmm/**)",
+      "Bash(git config *)",
+      "Bash(security find-internet-password *)"
+    ]
+  }
+}
