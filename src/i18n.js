@@ -15,6 +15,14 @@ export const dict = {
     'about.text':
       'Savva is a quiet corner in Madinah, built around good coffee and a calm, considered atmosphere. Every cup — from a classic espresso to our own Savva Matcha — is made with care, in a space meant for slowing down.',
     'about.photo.alt': 'Photo from Savva coffee shop coming soon',
+    'contacts.heading': 'Contacts',
+    'contacts.address.label': 'Address',
+    'contacts.address.value': 'Zubairah Al Roumiah, Bir Uthman, Madinah 42331, Saudi Arabia',
+    'contacts.map.link': 'Open in Google Maps',
+    'contacts.instagram.link': 'Instagram',
+    'contacts.whatsapp.cta': 'Order via WhatsApp',
+    'contacts.phone.label': 'Phone',
+    'footer.rights': 'Savva Specialty Coffee. All rights reserved.',
   },
   ar: {
     'menu.heading': 'المنيو',
@@ -30,6 +38,14 @@ export const dict = {
     'about.text':
       'سافا ركن هادئ في المدينة المنورة، بُني حول قهوة مميزة وأجواء هادئة ومدروسة. كل كوب — من الإسبريسو الكلاسيكي إلى ماتشا سافا الخاصة بنا — يُحضّر بعناية، في مساحة صُممت لتمنحك لحظة هدوء.',
     'about.photo.alt': 'صورة من مقهى سافا قريباً',
+    'contacts.heading': 'تواصل معنا',
+    'contacts.address.label': 'العنوان',
+    'contacts.address.value': 'الزبيرة الرومية، بئر عثمان، المدينة المنورة 42331، المملكة العربية السعودية',
+    'contacts.map.link': 'افتح في خرائط جوجل',
+    'contacts.instagram.link': 'إنستغرام',
+    'contacts.whatsapp.cta': 'اطلب عبر واتساب',
+    'contacts.phone.label': 'الهاتف',
+    'footer.rights': 'سافا قهوة مختصة. جميع الحقوق محفوظة.',
   },
 };
 

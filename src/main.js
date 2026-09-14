@@ -3,10 +3,14 @@ import './styles/header.css';
 import './styles/hero.css';
 import './styles/menu.css';
 import './styles/about.css';
+import './styles/contacts.css';
+import './styles/footer.css';
 import { renderHeader } from './render-header.js';
 import { renderHero } from './render-hero.js';
 import { renderMenuSection } from './render-menu.js';
 import { renderAbout } from './render-about.js';
+import { renderContacts } from './render-contacts.js';
+import { renderFooter } from './render-footer.js';
 import { getInitialLang, persistLang, applyLangToDocument } from './i18n.js';
 
 const app = document.querySelector('#app');
@@ -58,8 +62,10 @@ function render() {
   const hero = renderHero();
   const menuSection = renderMenuSection(lang);
   const about = renderAbout();
+  const contacts = renderContacts(lang);
+  const footer = renderFooter(lang);
 
-  app.append(header, hero, menuSection, about);
+  app.append(header, hero, menuSection, about, contacts, footer);
   wireTabs(menuSection);
 
   applyLangToDocument(lang);
