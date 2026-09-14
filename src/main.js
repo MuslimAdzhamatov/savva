@@ -17,16 +17,36 @@ const app = document.querySelector('#app');
 
 let lang = getInitialLang();
 
+let scrollSpyObserver = null;
+
 function wireTabs(section) {
-  const tabs = section.querySelectorAll('.menu-tabs__tab');
+  const tabs = [...section.querySelectorAll('.menu-tabs__tab')];
+  const panels = [...section.querySelectorAll('.menu-category')];
+
+  const selectTab = (categoryId) => {
+    tabs.forEach((tEl) => tEl.setAttribute('aria-selected', tEl.dataset.categoryTab === categoryId ? 'true' : 'false'));
+  };
+
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => {
-      tabs.forEach((tEl) => tEl.setAttribute('aria-selected', 'false'));
-      tab.setAttribute('aria-selected', 'true');
+      selectTab(tab.dataset.categoryTab);
       const target = section.querySelector(`#menu-${tab.dataset.categoryTab}`);
       target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  // Scroll-spy: подсвечивает вкладку той категории, что сейчас читается,
+  // независимо от того, докрутили ли до неё через вкладку или обычным свайпом.
+  scrollSpyObserver?.disconnect();
+  scrollSpyObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) selectTab(entry.target.dataset.category);
+      });
+    },
+    { rootMargin: '-140px 0px -60% 0px', threshold: 0 }
+  );
+  panels.forEach((panel) => scrollSpyObserver.observe(panel));
 }
 
 /**
@@ -58,14 +78,25 @@ function restoreScrollAnchor(anchor) {
 function render() {
   app.innerHTML = '';
 
+  const skipLink = document.createElement('a');
+  skipLink.className = 'skip-link';
+  skipLink.href = '#main';
+  skipLink.dataset.i18n = 'a11y.skipToContent';
+
   const header = renderHeader(lang, () => setLang(lang === 'ar' ? 'en' : 'ar'));
+
+  const main = document.createElement('main');
+  main.id = 'main';
+
   const hero = renderHero();
   const menuSection = renderMenuSection(lang);
   const about = renderAbout();
   const contacts = renderContacts(lang);
+  main.append(hero, menuSection, about, contacts);
+
   const footer = renderFooter(lang);
 
-  app.append(header, hero, menuSection, about, contacts, footer);
+  app.append(skipLink, header, main, footer);
   wireTabs(menuSection);
 
   applyLangToDocument(lang);

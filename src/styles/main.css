@@ -89,23 +89,24 @@ button {
   color: #fff;
 }
 
-section {
+section,
+#main {
   scroll-margin-top: var(--header-h);
 }
 
-.lang-toggle {
-  display: block;
-  margin-inline: auto;
-  margin-block: var(--space-3);
+.skip-link {
+  position: fixed;
+  inset-inline-start: var(--space-3);
+  top: -3rem;
+  z-index: 100;
+  background: var(--c-primary-dark);
+  color: #fff;
   padding: var(--space-2) var(--space-4);
-  border-radius: 999px;
-  border: 1px solid var(--c-border);
-  background: var(--c-surface);
-  color: var(--c-ink-soft);
-  font-weight: 500;
+  border-radius: var(--radius-s);
+  text-decoration: none;
+  transition: top 0.2s var(--ease-out);
 }
 
-.lang-toggle:hover {
-  border-color: var(--c-primary);
-  color: var(--c-primary-dark);
+.skip-link:focus-visible {
+  top: var(--space-3);
 }

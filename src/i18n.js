@@ -2,6 +2,9 @@
 
 export const dict = {
   en: {
+    'meta.title': 'Savva — Menu',
+    'meta.description': 'Savva specialty coffee in Madinah — menu with prices and calories, location and WhatsApp ordering.',
+    'a11y.skipToContent': 'Skip to content',
     'menu.heading': 'Menu',
     'lang.switch': 'العربية',
     'nav.menu': 'Menu',
@@ -25,6 +28,9 @@ export const dict = {
     'footer.rights': 'Savva Specialty Coffee. All rights reserved.',
   },
   ar: {
+    'meta.title': 'سافا — المنيو',
+    'meta.description': 'سافا قهوة مختصة في المدينة المنورة — المنيو بالأسعار والسعرات، الموقع والطلب عبر واتساب.',
+    'a11y.skipToContent': 'تخطَّ إلى المحتوى',
     'menu.heading': 'المنيو',
     'lang.switch': 'English',
     'nav.menu': 'المنيو',
@@ -86,4 +92,7 @@ export function applyLangToDocument(lang) {
   document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
     el.setAttribute('aria-label', t(el.dataset.i18nAria, lang));
   });
+
+  document.title = t('meta.title', lang);
+  document.querySelector('meta[name="description"]')?.setAttribute('content', t('meta.description', lang));
 }
