@@ -8,6 +8,7 @@ export function renderMenuSection(lang) {
   const section = document.createElement('section');
   section.id = 'menu';
   section.className = 'menu-section';
+  section.dataset.scrollAnchor = section.id;
 
   const heading = document.createElement('h2');
   heading.className = 'menu-section__heading';
@@ -35,6 +36,7 @@ export function renderMenuSection(lang) {
     panel.className = 'menu-category';
     panel.id = `menu-${category.id}`;
     panel.dataset.category = category.id;
+    panel.dataset.scrollAnchor = panel.id;
     panel.style.scrollMarginTop = 'var(--header-h)';
 
     const panelTitle = document.createElement('h3');

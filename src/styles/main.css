@@ -92,3 +92,20 @@ button {
 section {
   scroll-margin-top: var(--header-h);
 }
+
+.lang-toggle {
+  display: block;
+  margin-inline: auto;
+  margin-block: var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  border-radius: 999px;
+  border: 1px solid var(--c-border);
+  background: var(--c-surface);
+  color: var(--c-ink-soft);
+  font-weight: 500;
+}
+
+.lang-toggle:hover {
+  border-color: var(--c-primary);
+  color: var(--c-primary-dark);
+}

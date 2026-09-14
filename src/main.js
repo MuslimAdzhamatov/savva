@@ -1,21 +1,28 @@
 import './styles/main.css';
 import './styles/menu.css';
 import { renderMenuSection } from './render-menu.js';
+import { getInitialLang, persistLang, applyLangToDocument, t } from './i18n.js';
 
 const app = document.querySelector('#app');
 
-function mountMenu(lang) {
-  app.innerHTML = '';
-  const section = renderMenuSection(lang);
-  app.append(section);
-  wireTabs(section);
+let lang = getInitialLang();
+
+function renderLangToggle() {
+  const btn = document.createElement('button');
+  btn.className = 'lang-toggle';
+  btn.type = 'button';
+  btn.setAttribute('aria-pressed', 'false');
+  btn.lang = lang === 'ar' ? 'en' : 'ar';
+  btn.dataset.i18n = 'lang.switch';
+  btn.addEventListener('click', () => setLang(lang === 'ar' ? 'en' : 'ar'));
+  return btn;
 }
 
 function wireTabs(section) {
   const tabs = section.querySelectorAll('.menu-tabs__tab');
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => {
-      tabs.forEach((t) => t.setAttribute('aria-selected', 'false'));
+      tabs.forEach((tEl) => tEl.setAttribute('aria-selected', 'false'));
       tab.setAttribute('aria-selected', 'true');
       const target = section.querySelector(`#menu-${tab.dataset.categoryTab}`);
       target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -23,4 +30,52 @@ function wireTabs(section) {
   });
 }
 
-mountMenu('en');
+/**
+ * Запоминает якорь прокрутки: среди элементов [data-scroll-anchor] (секции
+ * и категории меню, вложенные друг в друга) берём самый «глубокий» из тех,
+ * что уже начались (top <= 0) — то есть категорию, а не всю обёртку секции.
+ * Если мы выше самого первого якоря, используем его.
+ */
+function captureScrollAnchor() {
+  const candidates = [...document.querySelectorAll('[data-scroll-anchor]')].map((el) => ({
+    id: el.dataset.scrollAnchor,
+    top: el.getBoundingClientRect().top,
+  }));
+  if (!candidates.length) return null;
+  const passed = candidates.filter((c) => c.top <= 0);
+  const chosen = passed.length ? passed[passed.length - 1] : candidates[0];
+  return { id: chosen.id, offset: chosen.top };
+}
+
+function restoreScrollAnchor(anchor) {
+  if (!anchor) return;
+  const el = document.getElementById(anchor.id);
+  if (!el) return;
+  const rect = el.getBoundingClientRect();
+  const delta = rect.top - anchor.offset;
+  window.scrollTo({ top: window.scrollY + delta, behavior: 'instant' });
+}
+
+function render() {
+  app.innerHTML = '';
+
+  const toggle = renderLangToggle();
+  app.append(toggle);
+
+  const menuSection = renderMenuSection(lang);
+  app.append(menuSection);
+  wireTabs(menuSection);
+
+  applyLangToDocument(lang);
+}
+
+function setLang(next) {
+  if (next === lang) return;
+  const anchor = captureScrollAnchor();
+  lang = next;
+  persistLang(lang);
+  render();
+  restoreScrollAnchor(anchor);
+}
+
+render();
