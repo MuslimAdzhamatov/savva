@@ -1,0 +1,44 @@
+:root {
+  color-scheme: light;
+
+  /* Фирменная палитра Savva */
+  --c-primary: #747a61;
+  --c-primary-dark: #5c6150;
+  --c-accent: #dac6ab;
+  --c-accent-light: #ece2d3;
+  --c-muted: #70808c;
+
+  --c-bg: #faf7f2;
+  --c-surface: #ffffff;
+  --c-ink: #2c2a24;
+  --c-ink-soft: #5a5748;
+  --c-border: #e4dbcb;
+
+  --font-display: 'Fraunces', 'Noto Serif Arabic', serif;
+  --font-body: 'Inter', 'IBM Plex Sans Arabic', sans-serif;
+  --font-body-ar: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+  --space-7: 6rem;
+
+  --radius-s: 6px;
+  --radius-m: 14px;
+  --radius-l: 28px;
+
+  --shadow-s: 0 2px 8px rgba(44, 42, 36, 0.08);
+  --shadow-m: 0 12px 32px rgba(44, 42, 36, 0.14);
+
+  --header-h: 64px;
+  --max-w: 720px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:lang(ar) {
+  --font-heading-active: var(--font-body-ar);
+}
