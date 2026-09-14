@@ -2,9 +2,11 @@ import './styles/main.css';
 import './styles/header.css';
 import './styles/hero.css';
 import './styles/menu.css';
+import './styles/about.css';
 import { renderHeader } from './render-header.js';
 import { renderHero } from './render-hero.js';
 import { renderMenuSection } from './render-menu.js';
+import { renderAbout } from './render-about.js';
 import { getInitialLang, persistLang, applyLangToDocument } from './i18n.js';
 
 const app = document.querySelector('#app');
@@ -55,8 +57,9 @@ function render() {
   const header = renderHeader(lang, () => setLang(lang === 'ar' ? 'en' : 'ar'));
   const hero = renderHero();
   const menuSection = renderMenuSection(lang);
+  const about = renderAbout();
 
-  app.append(header, hero, menuSection);
+  app.append(header, hero, menuSection, about);
   wireTabs(menuSection);
 
   applyLangToDocument(lang);

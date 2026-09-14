@@ -11,6 +11,10 @@ export const dict = {
     'nav.whatsapp.aria': 'Order via WhatsApp',
     'hero.tagline': 'Specialty coffee in the heart of Madinah',
     'hero.cta': 'View Menu',
+    'about.heading': 'About Savva',
+    'about.text':
+      'Savva is a quiet corner in Madinah, built around good coffee and a calm, considered atmosphere. Every cup — from a classic espresso to our own Savva Matcha — is made with care, in a space meant for slowing down.',
+    'about.photo.alt': 'Photo from Savva coffee shop coming soon',
   },
   ar: {
     'menu.heading': 'المنيو',
@@ -22,6 +26,10 @@ export const dict = {
     'nav.whatsapp.aria': 'اطلب عبر واتساب',
     'hero.tagline': 'قهوة مختصة في قلب المدينة المنورة',
     'hero.cta': 'شاهد المنيو',
+    'about.heading': 'عن سافا',
+    'about.text':
+      'سافا ركن هادئ في المدينة المنورة، بُني حول قهوة مميزة وأجواء هادئة ومدروسة. كل كوب — من الإسبريسو الكلاسيكي إلى ماتشا سافا الخاصة بنا — يُحضّر بعناية، في مساحة صُممت لتمنحك لحظة هدوء.',
+    'about.photo.alt': 'صورة من مقهى سافا قريباً',
   },
 };
 
